@@ -1,0 +1,166 @@
+/** @format */
+
+:root {
+  --clr-secondary-200: hsl(30, 38%, 92%);
+  --clr-accent-400: 158 36% 37%;
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-400: hsl(228, 12%, 48%);
+  --clr-neutral-900: hsl(212, 21%, 14%);
+
+  --fs-400: 0.875rem;
+
+  --ff-base: "Montserrat", sans-serif;
+  --ff-secondary: "Fraunces", serif;
+
+  --fw-regular: 500;
+  --fw-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+picture,
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+/* General styling */
+
+body {
+  line-height: 1.7;
+  font-size: var(--fs-400);
+  font-family: var(--ff-base);
+  font-weight: var(--fw-regular);
+  background: var(--clr-secondary-200);
+  color: var(--clr-neutral-400);
+
+  /* for this project only */
+  display: grid;
+  place-items: center;
+  margin: 1rem;
+}
+
+/* Utilities */
+
+.flex-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+
+  /* for this project only */
+  align-items: center;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Card styling */
+
+.card {
+  --_content-padding: 1.5em;
+  --_content-spacing: 1rem;
+
+  background: var(--clr-neutral-100);
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  display: grid;
+  max-width: 600px;
+}
+
+@media (min-width: 600px) {
+  .card {
+    --_content-padding: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  body {
+    overflow: hidden;
+  }
+}
+
+.card__content {
+  padding: var(--_content-padding);
+  display: grid;
+  gap: var(--_content-spacing);
+}
+
+.card__category {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.card__title {
+  font-size: 2rem;
+  font-family: var(--ff-secondary);
+  color: var(--clr-neutral-900);
+  line-height: 1;
+}
+
+.card__new-price {
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+  font-family: var(--ff-secondary);
+  color: hsl(var(--clr-accent-400));
+}
+
+/* Button styling */
+
+.button {
+  cursor: pointer;
+  padding-block: 0.85em;
+  font-weight: var(--fw-bold);
+  font-family: var(--ff-base);
+  background: hsl(var(--clr-accent-400));
+  color: var(--clr-neutral-100);
+  border-radius: 0.4em;
+  border: 0;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.button[data-icon="shopping-cart"]::before {
+  content: "";
+  background-image: url(images/icon-cart.svg);
+  width: 15px;
+  aspect-ratio: 1;
+}
+
+.button:is(:hover, :focus-visible) {
+  background: hsl(var(--clr-accent-400) / 0.7);
+}
